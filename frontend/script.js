@@ -1,8 +1,8 @@
 let sessionId = null;
 let isLoading = false;
-const API_BASE_URL = (window.CONFIG && window.CONFIG.API_URL)
-    ? window.CONFIG.API_URL
-    : 'http://localhost:8000';
+const API_BASE_URL = window.location.protocol === 'file:' || ['localhost', '127.0.0.1'].includes(window.location.hostname)
+    ? 'http://localhost:8000'
+    : '';
 
 const chatArea = document.getElementById('chatArea');
 const messagesContainer = document.getElementById('messagesContainer');

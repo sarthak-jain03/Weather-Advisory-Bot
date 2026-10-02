@@ -1,7 +1,0 @@
-{
-  "buildCommand": "echo \"window.CONFIG = { API_URL: '$API_URL' };\" > config.js",
-  "outputDirectory": ".",
-  "rewrites": [
-    { "source": "/(.*)", "destination": "/index.html" }
-  ]
-}
