@@ -1,0 +1,356 @@
+sops:
+
+  - id: SOP-001
+    title: "High UV — Midday Outdoor Exercise"
+    category: outdoor_exercise
+    severity: high
+    conditions:
+      - field: uv_index
+        operator: gte
+        value: 8
+      - field: current_hour
+        operator: between
+        values: [11, 16]
+    activity_keywords:
+      - running
+      - jogging
+      - cycling
+      - walking
+      - hiking
+      - outdoor workout
+      - exercise
+    guidance: >
+      The UV index is currently {uv_index}, which is very high.
+      Avoid unprotected outdoor exercise between 11 AM and 4 PM.
+      If you must go out, wear SPF 50+ sunscreen, a hat, and UV-blocking
+      sunglasses.  Consider rescheduling to early morning (before 8 AM)
+      or evening (after 6 PM).
+    rationale: "UV ≥ 8 causes sunburn in <15 min on unprotected skin."
+
+  - id: SOP-002
+    title: "High Wind — Cycling & Two-Wheelers"
+    category: outdoor_exercise
+    severity: high
+    conditions:
+      - field: wind_speed_10m
+        operator: gte
+        value: 40
+    activity_keywords:
+      - cycling
+      - bike
+      - bike ride
+      - bicycle
+      - two-wheeler
+      - scooter
+      - motorbike
+    guidance: >
+      Wind speed is {wind_speed_10m} km/h, which exceeds 40 km/h.
+      This is a safety risk for cycling and two-wheelers, not just a comfort
+      issue — gusts can cause loss of control.  Avoid riding until winds
+      drop below 30 km/h.  If you're already out, pull over safely and wait.
+    rationale: "Crosswinds >40 km/h are a tip-over hazard for two-wheelers."
+
+  - id: SOP-003
+    title: "Heavy Precipitation — Outdoor Exercise"
+    category: outdoor_exercise
+    severity: moderate
+    conditions:
+      - field: precipitation
+        operator: gte
+        value: 5
+    activity_keywords:
+      - running
+      - jogging
+      - cycling
+      - walking
+      - hiking
+      - outdoor workout
+      - exercise
+      - jog
+      - run
+      - walk
+    guidance: >
+      Current precipitation is {precipitation} mm, indicating heavy rain.
+      Roads and trails may be slippery.  Visibility is reduced.
+      Postpone your outdoor exercise or move to an indoor alternative.
+      If you must go out, wear reflective gear and avoid low-lying areas
+      prone to waterlogging.
+    rationale: "Precip ≥ 5 mm makes surfaces slippery; risk of falls and poor visibility."
+
+  - id: SOP-004
+    title: "Extreme Heat — Outdoor Exercise"
+    category: outdoor_exercise
+    severity: high
+    conditions:
+      - field: temperature_2m
+        operator: gte
+        value: 40
+    activity_keywords:
+      - running
+      - jogging
+      - cycling
+      - walking
+      - hiking
+      - outdoor workout
+      - exercise
+      - sports
+    guidance: >
+      The temperature is {temperature_2m}°C, which is dangerously high.
+      Outdoor exercise in this heat carries a serious risk of heat stroke
+      and dehydration.  Stay indoors with cooling.  If you must exercise,
+      do so indoors in an air-conditioned environment, or wait until
+      temperatures drop below 35°C (typically after sunset).
+    rationale: "Temps ≥ 40°C sharply increase heat stroke risk during exertion."
+
+  - id: SOP-005
+    title: "High Precipitation Probability — Travel Delays"
+    category: travel
+    severity: moderate
+    conditions:
+      - field: precipitation_probability
+        operator: gte
+        value: 70
+    activity_keywords:
+      - travel
+      - commute
+      - drive
+      - road trip
+      - flight
+      - train
+      - going to work
+      - going to office
+      - trip
+    guidance: >
+      There is a {precipitation_probability}% chance of precipitation.
+      Expect possible delays on roads and at airports.  Check for
+      weather alerts before departure, carry rain gear, and allow extra
+      travel time.  Monitor local traffic updates.
+    rationale: "Precip probability ≥ 70% correlates with travel disruptions."
+
+  - id: SOP-006
+    title: "Low Visibility / Fog — Driving"
+    category: travel
+    severity: high
+    conditions:
+      - field: visibility
+        operator: lte
+        value: 1000
+    activity_keywords:
+      - drive
+      - driving
+      - car
+      - commute
+      - road trip
+      - travel
+    guidance: >
+      Visibility is approximately {visibility} m, which is very low.
+      Use fog lights (not high beams), reduce speed, and maintain a
+      greater following distance.  If visibility drops below 200 m,
+      consider pulling over safely and waiting.  Avoid unnecessary travel.
+    rationale: "Visibility ≤ 1 km is dense fog; accident rates spike."
+
+  - id: SOP-007
+    title: "Gusty Wind — Travel Advisory"
+    category: travel
+    severity: moderate
+    conditions:
+      - field: wind_gusts_10m
+        operator: gte
+        value: 50
+    activity_keywords:
+      - travel
+      - drive
+      - highway
+      - road
+      - commute
+      - trip
+    guidance: >
+      Wind gusts are reaching {wind_gusts_10m} km/h.  High-profile
+      vehicles (SUVs, trucks) are especially vulnerable on highways
+      and bridges.  Grip the steering wheel firmly, reduce speed, and
+      avoid overtaking large vehicles.  Consider delaying travel if
+      gusts exceed 70 km/h.
+    rationale: "Gusts ≥ 50 km/h affect vehicle stability, especially on open roads."
+
+  - id: SOP-008
+    title: "Heat Advisory — Elderly & Children"
+    category: vulnerable_groups
+    severity: high
+    conditions:
+      - field: temperature_2m
+        operator: gte
+        value: 35
+    activity_keywords:
+      - elderly
+      - senior
+      - old parent
+      - grandparent
+      - child
+      - children
+      - kids
+      - toddler
+      - baby
+      - infant
+      - park
+      - playground
+    guidance: >
+      The temperature is {temperature_2m}°C.  For elderly individuals
+      and young children, heat-related illness can onset faster than in
+      healthy adults.  Keep them indoors in a cool environment.  Ensure
+      frequent hydration.  Outdoor visits (parks, playgrounds) should be
+      limited to early morning or late evening.  Watch for signs of heat
+      exhaustion: dizziness, nausea, rapid pulse.
+    rationale: "Elderly and children thermoregulate poorly; lower threshold than SOP-004."
+
+  - id: SOP-009
+    title: "Air Quality — Respiratory Vulnerable Groups"
+    category: vulnerable_groups
+    severity: high
+    conditions:
+      - field: us_aqi
+        operator: gte
+        value: 150
+    activity_keywords:
+      - asthma
+      - breathing
+      - respiratory
+      - lungs
+      - elderly
+      - child
+      - children
+      - copd
+      - allergy
+      - allergies
+    guidance: >
+      The air quality index (US AQI) is {us_aqi}, rated as "Unhealthy."
+      People with asthma, COPD, or other respiratory conditions, as well
+      as children and the elderly, should stay indoors with windows closed.
+      Use an air purifier if available.  Avoid any outdoor exertion.
+    rationale: "AQI ≥ 150 is 'Unhealthy'; vulnerable groups affected at lower levels."
+
+  - id: SOP-010
+    title: "Cold Weather — Pets Outdoors"
+    category: vulnerable_groups
+    severity: moderate
+    conditions:
+      - field: temperature_2m
+        operator: lte
+        value: 5
+    activity_keywords:
+      - pet
+      - dog
+      - cat
+      - puppy
+      - kitten
+      - walk the dog
+      - pet walk
+    guidance: >
+      The temperature is {temperature_2m}°C.  Short-haired and small
+      breeds are vulnerable to hypothermia below 5°C.  Limit outdoor
+      time to 15–20 minutes, use a pet sweater or coat, and protect
+      paws from ice.  Bring pets indoors immediately if they shiver
+      or lift their paws.
+    rationale: "Small/short-haired dogs risk hypothermia below 5°C."
+
+  - id: SOP-011
+    title: "Good Day for a Picnic? (Fuzzy Comfort Assessment)"
+    category: general
+    severity: low
+    conditions:
+      - field: _fuzzy_comfort
+        operator: any
+        value: null
+    activity_keywords:
+      - picnic
+      - outdoor dining
+      - barbecue
+      - bbq
+      - park day
+      - beach day
+      - outdoor party
+      - good day for
+      - nice day
+      - pleasant
+      - outing
+    guidance: >
+      Based on current conditions — temperature {temperature_2m}°C,
+      wind {wind_speed_10m} km/h, precipitation probability
+      {precipitation_probability}%, UV index {uv_index} — here's an
+      overall comfort assessment for your outdoor plans:
+
+      If conditions are GOOD: "Conditions look comfortable for outdoor
+      activities.  Bring water and sun protection just in case."
+
+      If conditions are MARGINAL: "It could go either way.  Consider
+      having an indoor backup plan, and check the forecast again
+      closer to your planned time."
+
+      If conditions are POOR: "Current conditions aren't ideal for
+      extended outdoor comfort.  Consider rescheduling or choosing
+      an indoor venue."
+    rationale: >
+      Picnic/outing comfort is inherently subjective and multi-factor.
+      No single threshold captures it.  This SOP intentionally delegates
+      the holistic judgment to the LLM while constraining the output to
+      three pre-written tiers.
+
+  - id: SOP-012
+    title: "Severe Weather System — Override"
+    category: general
+    severity: critical
+    conditions:
+      - field: precipitation
+        operator: gte
+        value: 15
+      - field: wind_speed_10m
+        operator: gte
+        value: 30
+    activity_keywords: []
+    guidance: >
+      ⚠️ SEVERE WEATHER ALERT: Current conditions show heavy
+      precipitation ({precipitation} mm) with sustained winds of
+      {wind_speed_10m} km/h, indicating a possible active weather
+      system (low-pressure area, cyclonic circulation, or similar).
+
+      ALL outdoor activities carry elevated risk right now.  This is
+      not activity-specific advice — the overall situation is dangerous.
+      Stay indoors.  Avoid waterlogged roads.  Monitor local IMD/weather
+      authority alerts.  Do not attempt outdoor travel unless absolutely
+      necessary.
+    rationale: >
+      The Madhya Pradesh low-pressure case: individual SOPs might not
+      fire if, say, wind is 35 km/h (below the 40 cycling threshold)
+      and precip is 20 mm, but the combination signals a dangerous
+      system.  This override catches the composite case.
+
+  - id: SOP-013
+    title: "Thunderstorm Risk — Outdoor Activities"
+    category: outdoor_exercise
+    severity: critical
+    conditions:
+      - field: precipitation
+        operator: gte
+        value: 10
+      - field: wind_gusts_10m
+        operator: gte
+        value: 60
+    activity_keywords:
+      - outdoor
+      - outside
+      - open field
+      - sports
+      - golf
+      - swimming
+      - pool
+      - beach
+      - trek
+      - hike
+    guidance: >
+      Current conditions (precipitation {precipitation} mm, wind gusts
+      {wind_gusts_10m} km/h) suggest possible thunderstorm activity.
+      Lightning is a life-threatening risk in open areas.  Immediately
+      seek shelter in a substantial building or hard-topped vehicle.
+      Avoid open fields, hilltops, isolated trees, and bodies of water.
+      Wait at least 30 minutes after the last thunder before resuming
+      outdoor activities.
+    rationale: "Heavy precip + extreme gusts = likely thunderstorm; lightning kills."

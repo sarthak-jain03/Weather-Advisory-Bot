@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather Advisory Bot</title>
+    <meta name="description"
+        content="Get personalized outdoor safety advice based on live weather data and expert safety policies.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <header class="app-header">
+            <div class="header-content">
+                <div class="logo-group">
+                    <div class="logo-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 2v4m0 12v4M4.93 4.93l2.83 2.83m8.48 8.48l2.83 2.83M2 12h4m12 0h4M4.93 19.07l2.83-2.83m8.48-8.48l2.83-2.83" />
+                            <circle cx="12" cy="12" r="3" />
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="app-title">Weather Advisory</h1>
+                        <p class="app-subtitle">Outdoor safety advice powered by live weather data</p>
+                    </div>
+                </div>
+                <div class="status-badge" id="statusBadge">
+                    <span class="status-dot"></span>
+                    <span>Live</span>
+                </div>
+            </div>
+        </header>
+
+        <main class="chat-area" id="chatArea">
+            <div class="welcome-card" id="welcomeCard">
+                <div class="welcome-icon">🌤️</div>
+                <h2>How can I help you stay safe outdoors?</h2>
+                <p>Ask me about outdoor activities in any city. I'll check live weather and give you policy-backed
+                    safety advice.</p>
+                <div class="example-queries">
+                    <button class="example-btn" onclick="sendExample(this)">Is it safe to cycle in Bhopal
+                        today?</button>
+                    <button class="example-btn" onclick="sendExample(this)">Should I take my kid to the park in
+                        Delhi?</button>
+                    <button class="example-btn" onclick="sendExample(this)">Is today a good day for a picnic in
+                        Mumbai?</button>
+                    <button class="example-btn" onclick="sendExample(this)">Can I go for a morning jog in
+                        Chennai?</button>
+                </div>
+            </div>
+
+            <div id="messagesContainer"></div>
+        </main>
+
+        <footer class="input-area">
+            <div class="input-wrapper">
+                <textarea id="messageInput" placeholder="Ask about outdoor safety in any city..." rows="1"
+                    autofocus></textarea>
+                <button class="send-btn" id="sendBtn" onclick="sendMessage()" title="Send message">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </footer>
+    </div>
+
+    <script src="/static/script.js"></script>
+</body>
+
+</html>
