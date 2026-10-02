@@ -1,4 +1,4 @@
-# MediBuddy Weather-Advisory Support Bot
+# Weather-Advisory Support Bot
 
 A chatbot that gives outdoor activity safety advice using live weather data and predefined safety policies (SOPs). Built with LangGraph, FastAPI, and vanilla JS.
 
