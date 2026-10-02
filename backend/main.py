@@ -123,9 +123,10 @@ async def health():
 
 _frontend_dir = Path(__file__).resolve().parent.parent / "frontend"
 
-app.mount("/static", StaticFiles(directory=str(_frontend_dir)), name="static")
-
 
 @app.get("/")
 async def serve_frontend():
     return FileResponse(str(_frontend_dir / "index.html"))
+
+
+app.mount("/", StaticFiles(directory=str(_frontend_dir)), name="static")
